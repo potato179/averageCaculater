@@ -41,7 +41,7 @@
         <input type = "text" id = "max" class = "form-control" placeholder = "최댓값" disabled><br>
         <p>중앙값</p>
         <input type = "text" id = "middle" class = "form-control" placeholder = "중앙값" disabled><br>
-        <p>최빈값 (모든 수가 하나씩 있을 경우 -1로 리턴)</p>
+        <p>최빈값 (모든 수가 같거나 다르면 -1로 리턴)</p>
         <input type = "text" id = "mode" class = "form-control" placeholder = "최빈값" disabled><br>
         <p>분산</p>
         <input type = "text" id = "disper" class = "form-control" placeholder = "분산" disabled><br>
@@ -69,7 +69,7 @@
             $("#sum").attr("placeholder", sum);
 
             var average = sum/len;
-            $("#average").attr("placeholder", average);
+            $("#average").attr("placeholder", `${average} (${sum}/${len})`);
 
             var min = Math.min(...num);
             $("#min").attr("placeholder", min);
@@ -121,7 +121,14 @@
                 $("#mode").attr("placeholder", -1);
             }
 
-            console.log(len, num, sum, average, min, max, middle)
+            //편차 = 변량-평균, 분산: 편체제곱의 총합/변량의 개수, 표준편차: 루트분산
+            let devitations = 0;
+            for(var item of num){
+                console.log(item);
+                devitations += (item-average) ** 2;
+            }
+            $("#disper").attr("placeholder", devitations/len);
+
         }
     </script>
 </body>
