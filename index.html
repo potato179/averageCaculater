@@ -128,7 +128,7 @@
                 devitations += (item-average) ** 2;
             }
             $("#disper").attr("placeholder", `${devitations/len} (${devitations}/${len})`);
-
+            $("#standard").attr("placeholder", `${Math.sqrt(devitations/len)} (√${devitations}/${len})`);
         }
     </script>
 </body>
