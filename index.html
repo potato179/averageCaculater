@@ -18,7 +18,7 @@
         <div class = "center">
             <br><br><br>
             <h1>통계 계산기</h1>
-            <p>수학 숙제 하다가 빡쳐서 만들어보았습니다. <br>이 사이트를 사용함으로써, 본인의 성적에는 본인이 책임 짐으로 간주하며, 사이트의 이용으로 인해 생긴 문제에 대해서 제작자는 일절 책임지지 않습니다.</p>    
+            <p>수학 숙제 하다가 빡쳐서 만들어보았습니다. <br>이 사이트를 사용함으로써, 본인의 성적에는 본인이 책임 짐으로 간주하며, 사이트의 이용으로 인해 생긴 문제에 대해서 제작자는 일절 책임지지 않습니다.<br>제작: 홍은표 | 웹플이 최고다</p>    
         </div>
         <br><br><br>
         <p>값 입력 (스페이스 단위로 구분)</p>
@@ -55,20 +55,27 @@
             num = num.map(Number);
 
             var len = num.length;
-            
+            $("#count").attr("placeholder", len);
+
             num.sort(function(a, b){
                 return a - b;
             });
+            $("#addded").attr("placeholder", num);
 
             var sum = 0;
             for(var i = 0; i < len; i++) {
                 sum += num[i];
             }
+            $("#sum").attr("placeholder", sum);
 
             var average = sum/len;
+            $("#average").attr("placeholder", average);
 
             var min = Math.min(...num);
+            $("#min").attr("placeholder", min);
+
             var max = Math.max(...num);
+            $("#max").attr("placeholder", max);
 
             var middle = 0;
             if(len%2 == 1){
@@ -79,6 +86,7 @@
                 var m2 = num[Math.ceil(len/2)];
                 middle = (m1 + m2) / 2;
             }
+            $("#middle").attr("placeholder", middle);
 
             var mode, freq, count = 1;
             for (var j = 0; j < len; j++){
